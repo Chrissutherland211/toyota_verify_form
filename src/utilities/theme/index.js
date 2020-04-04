@@ -1,26 +1,22 @@
 export default {
     palette: {
-        primary: {
-            light: '#ffff52',
-            main: '#ffd300',
-            dark: '#c7a200',
-            contrastText: '#000',
+        TOYOTA_FINANCE: {
+            background_color: "#f5f6f7",
+            header_color: "#ffffff",
+            fonts:{
+                dark: "#222",
+                success: "#00c483",
+                warn: "#c5141f",
+                gray: '#666',
+                font_family: `ToyotaType,"Helvetica Neue",Helvetica,Arial,sans-serif`
+            }
         },
         secondary: {
             light: '#ff7539',
             main: '#ff3d00',
             dark: '#c30000',
             contrastText: '#fafafa',
-        },
-        table: {
-            header: '#eaeaea',
-            main: '#ff3d00',
-            dark: '#c30000',
-            contrastText: '#fafafa',
-        },
-        spinner: {
-            color: '#009688',
-        }
-    },
+        }     
+    }
 }
   
