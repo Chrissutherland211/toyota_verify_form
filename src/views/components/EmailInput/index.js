@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -29,10 +30,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function InputAdornments() {
+export default function InputAdornments(props) {
     const classes = useStyles();
     const dispatch = useDispatch();
     const data = useSelector(store=>store.user)
+    const history = useHistory();
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -51,6 +53,7 @@ export default function InputAdornments() {
             console.log(data)
         if(!values.emailValid && data.email){
             setValues({ ...values, sendEmail: true });
+            history.push('/contact_number')
         }
     };
 

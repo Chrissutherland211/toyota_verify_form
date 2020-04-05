@@ -6,7 +6,7 @@ import logo from '../../../assets/images/logo.png';
 
 export default function Header() {
     const data = useSelector(store=>store.brand)
-    // console.log(data)
+    console.log(theme.palette[data.brand])
     return(
         <StyledHeaderContainer color={theme.palette[data.brand].header_color}>
             <StyledLogoContainer>

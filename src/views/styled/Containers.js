@@ -8,14 +8,7 @@ export const Container = styled.div`
     background-color: ${props=>props.color}    
 `
 
-export const StyledContentContainer = styled.div`
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 102px;
-    padding-bottom: 96px;
-`
-
-export const StyledVerifyEmailContainer = styled.div`  
+export const StyledContentContainer = styled.div`  
     flex: 1 1 auto;  
     display: flex;
     flex-direction: column;
@@ -24,5 +17,6 @@ export const StyledVerifyEmailContainer = styled.div`
     padding-right: 15px;
     padding-top: 96px;
     padding-bottom: 96px;
+    background-color: ${props=>props.color};
 `
 
