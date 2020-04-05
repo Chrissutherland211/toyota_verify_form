@@ -23,6 +23,7 @@ export default {
     Email_address: {
         id: 'Email address',
         name: 'Email_address',
+        
     },
     Mobile_phone_number: {
         id: 'Mobile phone number',
@@ -43,5 +44,14 @@ export default {
     Preferred_contact_method: {
         id: 'Preferred contact method',
         name: 'Preferred_contact_method'
-    }
+    },
+    commercial_loan_company: {
+        id:"Is the loan a commercial loan, in the name of a Company?",
+        name: 'commercial_loan_company',
+        select: [
+            {}
+        ]
+    },
+
 }
+

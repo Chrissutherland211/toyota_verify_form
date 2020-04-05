@@ -8,16 +8,22 @@ const initialState = {};
 
 const signInReducer = createReducer(initialState)({
     [types.SIGN_IN]: ({ token }) => {
-        const { user_id: id, aud: role, status } = decode(token);
-    
-        return {
-          token,
-          id,
-          type: getUserType(role),
-          role,
-          status
-        };
-      },
+      const { user_id: id, aud: role, status } = decode(token);
+  
+      return {
+        token,
+        id,
+        type: getUserType(role),
+        role,
+        status
+      };
+    },
+    [types.SET_EMAIL]: (state, { payload }) => {  
+      return {
+        ...initialState,
+        email: payload
+      };
+    },
 })
 
 export default signInReducer;

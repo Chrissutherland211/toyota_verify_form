@@ -5,7 +5,7 @@ export const StyledHeaderContainer = styled.div`
     height: 96px;
     background-color: ${props=>props.color};
     position: relative;
-
+    flex: 0 1 auto;
     @media (max-width: 1279px) {
         height: 72px;
     }
@@ -23,9 +23,7 @@ export const StyledLogoContainer = styled.div`
     
     & img {
         width: 56px;
-    }
-    
-    
+    }   
 
     @media (max-width: 1279px) {
         & img {
