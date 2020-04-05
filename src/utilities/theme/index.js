@@ -1,6 +1,6 @@
 export default {
     palette: {
-        TOYOTA_FINANCE: {
+        TOYOTA_FINANCE: {                        
             background_color: "#f5f6f7",
             header_color: "#ffffff",
             fonts:{

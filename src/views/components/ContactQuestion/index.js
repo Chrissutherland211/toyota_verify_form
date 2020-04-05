@@ -26,18 +26,18 @@ function ContactQuestion() {
         <StyledContainer>
             {isContractNumber===''?
             <>
-                <h1>To get started, do you know your contract number?</h1>
+                <h4>To get started, do you know your contract number?</h4>
                 <RadioGroup />
             </>
             :
             isContractNumber==='true'?
             <>
-                <h2>8 digits, Start with: 11, 12, 13</h2>
+                <h4>8 digits, Start with: 11, 12, 13</h4>
                 <CodeInput />
             </>
             :
             <>
-                <h2>Do you know your registration number?</h2>
+                <h4>Do you know your registration number?</h4>
                 <RegisterInput />
             </>
             }
