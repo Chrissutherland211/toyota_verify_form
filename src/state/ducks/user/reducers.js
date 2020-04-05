@@ -24,6 +24,18 @@ const signInReducer = createReducer(initialState)({
         email: payload
       };
     },
+    [types.IS_CONTRACT_NUMBER]: (state, { payload }) => {  
+      return {
+        ...initialState,
+        isContractNumber: payload
+      };
+    },
+    [types.SET_CONTRACT_NUMBER]: (state, { payload }) => {  
+      return {
+        ...initialState,
+        contractNumber: payload
+      };
+    },
 })
 
 export default signInReducer;

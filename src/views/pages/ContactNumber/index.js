@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import Header from '../../components/Header';
 import { StyledContentContainer } from '../../styled/Containers';
 import { StyledFormContainer } from '../../components/Form/style';
+import ContactQuestion from '../../components/ContactQuestion';
 import theme from '../../../utilities/theme';
 
 
@@ -12,7 +12,7 @@ function ContactNumber() {
   return ( 
       <StyledContentContainer color={theme.palette[data.brand].background_color}>
         <StyledFormContainer>
-            {/* <EmailInput /> */}
+            <ContactQuestion />
         </StyledFormContainer>
       </StyledContentContainer>
   );

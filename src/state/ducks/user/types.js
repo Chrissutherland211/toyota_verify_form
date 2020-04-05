@@ -5,3 +5,5 @@ export const SIGN_UP = "SIGN_UP";
 export const SIGN_UP_FAIL = "SIGN_UP_FAIL";
 export const USER_DATA_SHOW = "USER_DATA_SHOW";
 export const SET_EMAIL = "SET_EMAIL";
+export const IS_CONTRACT_NUMBER = "IS_CONTRACT_NUMBER";
+export const SET_CONTRACT_NUMBER = "SET_CONTRACT_NUMBER";

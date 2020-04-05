@@ -11,3 +11,13 @@ export const setEmail = (email, dispatch) => (dispatch({
     type: types.SET_EMAIL,
     payload: email
 }));
+
+export const isContractNumber = (payload, dispatch) => (dispatch({
+    type: types.IS_CONTRACT_NUMBER,
+    payload: payload
+}));
+
+export const setContractNumber = (payload, dispatch) => (dispatch({
+    type: types.SET_CONTRACT_NUMBER,
+    payload: payload
+}));

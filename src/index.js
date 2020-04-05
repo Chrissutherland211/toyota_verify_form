@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './state/store';
 import ThemeSetting from './utilities/theme/index';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
+import { GlobalStyles } from './views/styled/GlobalStyles';
 
 const theme = createMuiTheme(ThemeSetting)
 
