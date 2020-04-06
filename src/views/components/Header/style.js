@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const StyledHeaderContainer = styled.div`
     width: 100%;
     height: 96px;
+    min-height: 96px;
     background-color: ${props=>props.color};
     position: relative;
     flex: 0 1 auto;
     @media (max-width: 1279px) {
         height: 72px;
+        min-height: 72px;
     }
 `
 

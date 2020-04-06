@@ -15,8 +15,8 @@ export const StyledContentContainer = styled.div`
     justify-content: center;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 35px;
+    padding-bottom: 35px;
     background-color: ${props=>props.color};
 
     & h4 {

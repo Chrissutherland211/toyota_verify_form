@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { StyledContentContainer } from '../../styled/Containers';
 import { StyledFormContainer } from '../../components/Form/style';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -29,7 +30,18 @@ const useStyles = makeStyles((theme) => ({
             background: "#fff",
             boxShadow: '1px 2px 6px 0 rgba(34,34,34,.15)',
         },
+    },   
+    button: {
+        marginTop: '80px',
+        width: '100%',
+        '& .MuiButtonBase-root': {
+            width: '100%',
+            borderRadius: '20px'
+        }
     },
+    color: {
+        backgroundColor: "#eb0a1e"
+    }
 }));
 
 
@@ -40,15 +52,18 @@ function RegisterNumber() {
     const [value, setValue] = React.useState(true);
     const handleRadioChange = (event) => {
         setValue(event.target.value);
-        if(event.target.value==='true'){
-            history.push('./registration_number_input')
-        } else if(event.target.value==='false'){
-            history.push('./hardship')
-        }
+        
         // isContractNumbers(event.target.value, dispatch);
         console.log(value)
     }; 
     const data = useSelector(store=>store.brand, shallowEqual)
+    const goHardship = () => {
+        if(value==='true'){
+            history.push('./registration_number_input')
+        } else if(value==='false'){
+            history.push('./hardship')
+        }
+    }
 
     return ( 
         <StyledContentContainer color={theme.palette[data.brand].background_color}>
@@ -60,6 +75,11 @@ function RegisterNumber() {
                     <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/>
                     </RadioGroup>        
                 </FormControl>
+                <div className={classes.button}>
+                    <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>goHardship()}>
+                        Next
+                    </Button>  
+                </div> 
             </StyledFormContainer>
         </StyledContentContainer>
     );

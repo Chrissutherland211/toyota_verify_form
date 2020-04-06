@@ -44,30 +44,28 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function RelatedCovid() {
+function CommercialLoan() {
     const history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(true);
     const handleRadioChange = (event) => {
-        setValue(event.target.value);
-        
+        setValue(event.target.value);       
         // isContractNumbers(event.target.value, dispatch);
         console.log(value)
     }; 
     const data = useSelector(store=>store.brand, shallowEqual)
-
     const goHardship = () => {
         if(value==='true'){
-            history.push('./commercial_loan')
+            // history.push('./registration_number_input')
         } else if(value==='false'){
-            history.push('./commercial_loan')
+            history.push('./hardship')
         }
     }
 
     return ( 
         <StyledContentContainer color={theme.palette[data.brand].background_color}>
             <StyledFormContainer>
-                <h4>Is your application related to COVID-19?</h4>
+                <h4>Is the loan a commercial loan, in the name of a Company?</h4>
                 <FormControl component="fieldset" className={classes.formControl}>       
                     <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
                     <FormControlLabel value="true" control={<Radio />} label="Yes" className={classes.root}/>
@@ -84,4 +82,4 @@ function RelatedCovid() {
     );
 };
 
-export default RelatedCovid;
+export default CommercialLoan;
