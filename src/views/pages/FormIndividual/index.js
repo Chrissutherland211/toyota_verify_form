@@ -4,14 +4,14 @@ import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { StyledContentContainer } from '../../styled/Containers';
 import { StyledFormContainer } from '../../components/Form/style';
-import { StyledDiv } from './style';
+import { StyledDiv, StyledWidthDiv } from './style';
 import theme from '../../../utilities/theme';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import PriceInput from '../../components/Form/PriceInput';
 import TextInput from '../../components/Form/TextInput';
 import { useHistory } from 'react-router-dom';
-import { borrowerOne } from '../../utils/questions';
+import { borrowerOne, expenses } from '../../utils/questions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -142,6 +142,25 @@ function FormIndividual() {
                 </>
               )            
             }   
+          })        
+        }
+
+        {covid&&
+          expenses.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 8
+            } else {
+              distance = 16
+            }
+            if (step===index + distance && (item.title!=='Other income e.g. rental income Specify type')){
+              return(
+                <StyledWidthDiv>
+                  <h4>Expenses</h4>
+                  <PriceInput title={item.title} />
+                </StyledWidthDiv> 
+              )
+            }
           })        
         }
         <StyledDiv>

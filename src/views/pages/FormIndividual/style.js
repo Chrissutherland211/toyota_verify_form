@@ -5,3 +5,7 @@ export const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;
 `
+
+export const StyledWidthDiv = styled.div`
+    width: 415px;
+`
