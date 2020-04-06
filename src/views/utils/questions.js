@@ -33,3 +33,15 @@ export const expenses = [
     {title: "Other"},
 ]
 
+export const assets = [
+   {title: "Residnetial property - Specify address"},
+   {title: "Investment property -  Specify address"},
+   {title: "Vehicle 1 - Specify make, model & year"},
+   {title: "Vehicle 2 - Specify make, model & year"},
+   {title: "Superannuation"},
+   {title: "Savings"},
+   {title: "Household funiture"},
+   {title: "Shares"},
+   {title: "Other - Specify"},
+]
+

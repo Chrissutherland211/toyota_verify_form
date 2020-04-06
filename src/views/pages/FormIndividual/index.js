@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import PriceInput from '../../components/Form/PriceInput';
 import TextInput from '../../components/Form/TextInput';
 import { useHistory } from 'react-router-dom';
-import { borrowerOne, expenses } from '../../utils/questions';
+import { borrowerOne, expenses, assets } from '../../utils/questions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -144,6 +144,7 @@ function FormIndividual() {
             }   
           })        
         }
+      
 
         {covid&&
           expenses.map((item, index)=>{
@@ -153,11 +154,43 @@ function FormIndividual() {
             } else {
               distance = 16
             }
-            if (step===index + distance && (item.title!=='Other income e.g. rental income Specify type')){
+            if (step===index + distance){
               return(
                 <StyledWidthDiv>
                   <h4>Expenses</h4>
                   <PriceInput title={item.title} />
+                </StyledWidthDiv> 
+              )
+            }
+          })        
+        }
+
+        {covid&&
+          assets.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 29
+            } else {
+              distance = 37
+            }
+            if(step===index+distance && 
+              (item.title==='Superannuation' ||
+              item.title==='Savings' ||
+              item.title==='Household funiture' ||
+              item.title==='Shares')){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Assets</h4>
+                    <PriceInput title={item.title} />
+                  </StyledWidthDiv> 
+                )                
+              }
+            if (step===index + distance){
+              return(
+                <StyledWidthDiv>
+                  <h4>Assets</h4>
+                  <TextInput title={item.title}  />
+                  <PriceInput title="Estimated Value" />
                 </StyledWidthDiv> 
               )
             }
