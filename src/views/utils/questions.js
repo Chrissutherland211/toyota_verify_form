@@ -72,6 +72,17 @@ export const backgroundHardship = [
     {title: "If you are searching for work. When you find suitable employment what do you expect your gross (before tax) monthly wage/salary to be?"},
     {title: "Do you have Finance Protection Insurance, Payment Protection Insurance or Consumer Credit Insurance for your loan contract(s)?"},
 ]
-
-
+export const backgroundHardshipCont = [
+    {
+        title: 'Briefly Describe your circumstances',
+        content:'Please provide evidence of your hardship such as a Separation Certificate or medical certificate or similar'
+    }
+]
+export const proposalAssistance = [
+    { title: 'Postpone my repayments for a period of:'},
+    { title: 'Reduce my repayments for a period of:'},
+    { title: 'Continue with my normal payments and request assistance with my missed payments'},
+    { title: 'Extend the loan term to reduce ongoing payments'},
+    { title: 'Other'},
+]
 

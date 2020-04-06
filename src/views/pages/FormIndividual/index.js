@@ -8,14 +8,16 @@ import { StyledDiv, StyledWidthDiv } from './style';
 import theme from '../../../utilities/theme';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CheckBox from '../../components/Form/CheckBox';
 import PriceInput from '../../components/Form/PriceInput';
 import TextInput from '../../components/Form/TextInput';
 import ValidateTextInput from '../../components/Form/ValidateTextInput';
 import DatePicker from '../../components/Form/DatePicker';
 import AccidentResult from '../../components/Form/AccidentResult';
 import FinanceProtection from '../../components/Form/FinanceProtection';
+import FileUpload from '../../components/Form/FileUpload';
 import { useHistory } from 'react-router-dom';
-import { borrowerOne, expenses, assets, liabilities, backgroundHardship } from '../../utils/questions';
+import { borrowerOne, expenses, assets, liabilities, backgroundHardship, backgroundHardshipCont, proposalAssistance } from '../../utils/questions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,9 +42,13 @@ const useStyles = makeStyles((theme) => ({
   button: {
       marginTop: '80px',
       width: '40%',
-      borderRadius: '20px',
-      
+      borderRadius: '20px',     
   },
+  previewButton :{
+    marginTop: '80px',
+      width: '100%',
+      borderRadius: '20px', 
+  }
   
 }));
 
@@ -73,14 +79,14 @@ function FormIndividual() {
   }
  
 
-  console.log(step)
+  console.log(covid)
 
   
   
   return (
     <StyledContentContainer color={theme.palette[data.brand].background_color}>
       <StyledFormContainer>
-        {covid&& twoperson==='true'&&
+        {covid==='false'&& twoperson==='true'&&
           borrowerOne.map((item, index)=>{
             if (step===index && (item.title!=='Other income e.g. rental income Specify type')){
               return(
@@ -103,7 +109,7 @@ function FormIndividual() {
           })              
         }  
 
-        {covid&& twoperson==='true'&&
+        {covid==='false'&& twoperson==='true'&&
           borrowerOne.map((item, index)=>{
             if (step===(index+8) && (item.title!=='Other income e.g. rental income Specify type')){
               return(
@@ -127,7 +133,7 @@ function FormIndividual() {
         }      
 
 
-        {covid&& twoperson==='false'&&
+        {covid==='false'&& twoperson==='false'&&
           borrowerOne.map((item, index)=>{
             if (step===index && (item.title!=='Other income e.g. rental income Specify type')){
               return(
@@ -151,7 +157,7 @@ function FormIndividual() {
         }
       
 
-        {covid&&
+        {covid==='false'&&
           expenses.map((item, index)=>{
             var distance = 8
             if(twoperson==='false'){
@@ -170,7 +176,7 @@ function FormIndividual() {
           })        
         }
 
-        {covid&&
+        {covid==='false'&&
           assets.map((item, index)=>{
             var distance = 0
             if(twoperson==='false'){
@@ -202,7 +208,7 @@ function FormIndividual() {
           })        
         }
 
-        {covid&&
+        {covid==='false'&&
           liabilities.map((item, index)=>{
             var distance = 0
             if(twoperson==='false'){
@@ -264,7 +270,7 @@ function FormIndividual() {
           })        
         }
 
-        {covid&&
+        {covid==='false'&&
           backgroundHardship.map((item, index)=>{
             var distance = 0
             if(twoperson==='false'){
@@ -313,15 +319,97 @@ function FormIndividual() {
                 )
               }       
             }    
-          })        
+          })   
+          
         }
+        {covid==='false'&&
+          backgroundHardshipCont.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 57
+            } else {
+              distance = 64
+            }
+            if(step===index+distance){
+              if(index===0){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Background to Hardship…Cont</h4>
+                    <ValidateTextInput title={item.title} /> 
+                    <h5 style={{marginTop:'30px'}}>{item.content}</h5>    
+                    <FileUpload />              
+                  </StyledWidthDiv> 
+                )
+              }
+            }
+          })         
+        }
+        {covid==='false'&&
+          proposalAssistance.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 58
+            } else {
+              distance = 65
+            }
+            if(step===index+distance){
+              if(index===0 || index===1){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Proposal for assistance</h4>
+                    <h5 style={{marginTop:'60px'}}>{item.title}</h5>
+                    <TextInput title="Specify months"/>                    
+                  </StyledWidthDiv> 
+                )
+              } else if(index===2){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Proposal for assistance</h4>
+                    <CheckBox title={item.title} /> 
+                  </StyledWidthDiv> 
+                )
+              } else if(index===3){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Proposal for assistance</h4>
+                    <CheckBox title={item.title} /> 
+                  </StyledWidthDiv> 
+                )
+              } else if(index===4){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Proposal for assistance</h4>
+                    <TextInput title="Other"/>
+                  </StyledWidthDiv> 
+                )
+              }
+
+            }
+          })         
+        }
+        
         <StyledDiv>
-          <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
-              BACK
-          </Button> 
-          <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>next()}>
-              Next
-          </Button>  
+          {twoperson==='true' && step===69 && covid==='false' ?
+            <Button variant="contained" color="secondary" className={classes.color, classes.previewButton}  onClick={()=>before()}>
+                PREVIEW
+            </Button>
+            :
+            twoperson==='false' && step===58 && covid==='false' ?
+            <Button variant="contained" color="secondary" className={classes.color, classes.previewButton}  onClick={()=>before()}>
+                PREVIEW
+            </Button>
+            :
+            <>
+              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
+                  BACK
+              </Button> 
+              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>next()}>
+                  Next
+              </Button> 
+            </>
+          }
+          
+           
         </StyledDiv>      
       </StyledFormContainer>
     </StyledContentContainer>
