@@ -85,4 +85,18 @@ export const proposalAssistance = [
     { title: 'Extend the loan term to reduce ongoing payments'},
     { title: 'Other'},
 ]
+export const backgroundHardshipCovid = [
+    { title: 'Select the option that best describes you circumstances'},
+    {title: "Approximately what date did these financial Difficulties start?"},
+    {title: "What date do you expect to be able to resume your full contractual repayments?"},
+    {title: "Do you have Finance Protection Insurance, Payment Protection Insurance or Consumer Credit Insurance for your loan contract(s)?"},
+]
+
+export const backgroundHardshipContCovid = [
+    {title: 'I have personally been medically diagnosed with COVID-19'},
+    {title: 'A dependent or person close to me has been diagnosed with COVID-19'},
+    {title: 'My employment or Income has ceased due to COVID-19'},
+    {title: 'My employment or Income has reduced due to COVID-19'},
+    {title: 'Other'}
+]
 

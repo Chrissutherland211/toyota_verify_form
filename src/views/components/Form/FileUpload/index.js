@@ -17,7 +17,7 @@ class DropzoneAreaExample extends Component{
     return (
       <DropzoneArea 
         onChange={this.handleChange.bind(this)}
-        dropzoneText = "Drag and Drop an file here or click"
+        dropzoneText = {this.props.title?this.props.title:"Drag and Drop an file here or click"}
         maxFileSize={1300000}
         />
     )  
