@@ -10,12 +10,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import PriceInput from '../../components/Form/PriceInput';
 import TextInput from '../../components/Form/TextInput';
+import ValidateTextInput from '../../components/Form/ValidateTextInput';
 import DatePicker from '../../components/Form/DatePicker';
+import AccidentResult from '../../components/Form/AccidentResult';
+import FinanceProtection from '../../components/Form/FinanceProtection';
 import { useHistory } from 'react-router-dom';
-import { borrowerOne, expenses, assets, liabilities } from '../../utils/questions';
+import { borrowerOne, expenses, assets, liabilities, backgroundHardship } from '../../utils/questions';
 
 
 const useStyles = makeStyles((theme) => ({
+  color: {
+    backgroundColor: "#eb0a1e"
+  },
   formControl: {
       // width: '100%'
   },
@@ -37,9 +43,7 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: '20px',
       
   },
-  color: {
-      backgroundColor: "#eb0a1e"
-  }
+  
 }));
 
 function FormIndividual() {
@@ -257,6 +261,58 @@ function FormIndividual() {
                 )
             }
             
+          })        
+        }
+
+        {covid&&
+          backgroundHardship.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 50
+            } else {
+              distance = 57
+            }
+            if(step===index+distance){
+              if(index===0){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Background to Hardship</h4>
+                    <ValidateTextInput title={item.title} />                   
+                  </StyledWidthDiv> 
+                )
+              } else if (index===1){
+                return(
+                  <AccidentResult title={item.title}/>
+                )
+              } else if (index===2 || index === 3){
+                return(
+                  <>
+                    <h4>{item.title}</h4>
+                    <DatePicker title="Date"/>
+                  </>
+                )
+              } else if (index===4){
+                return(
+                  <>
+                    <h4>{item.title}</h4>
+                    <TextInput title="Text"/>
+                  </>
+                )
+              } else if (index===5){
+                return(
+                  <>
+                    <h4>{item.title}</h4>
+                    <PriceInput title="AUD"/>
+                  </>
+                )
+              }  else if (index===6){
+                return(
+                  <>
+                    <FinanceProtection title={item.title}/>
+                  </>
+                )
+              }       
+            }    
           })        
         }
         <StyledDiv>

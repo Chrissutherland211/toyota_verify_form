@@ -47,6 +47,8 @@ export const assets = [
    {title: "Shares"},
    {title: "Other - Specify"},
 ]
+
+//12
 export const liabilities = [
     {title: "Rent/Board"},
     {title: "Residential Mortgage"},
@@ -61,4 +63,15 @@ export const liabilities = [
     {title: "Credit Card with"},
     {title: "Other - Specify"}
 ]
+export const backgroundHardship = [
+    {title: "Briefly Describe your circumstances"},
+    {title: "If your situation is as a result of an accident, are you dligible for compensation?"},
+    {title: "Approximately what date did these financial Difficulties start?"},
+    {title: "What date do you expect to be able to resume your full contractual repayments?"},
+    {title: "What are you doing/able to do to address your situation?"},
+    {title: "If you are searching for work. When you find suitable employment what do you expect your gross (before tax) monthly wage/salary to be?"},
+    {title: "Do you have Finance Protection Insurance, Payment Protection Insurance or Consumer Credit Insurance for your loan contract(s)?"},
+]
+
+
 
