@@ -1,3 +1,4 @@
+// 8
 export const borrowerOne =  [
     {title:"After tax salary per month"},
     {title:"Pension"},
@@ -9,6 +10,7 @@ export const borrowerOne =  [
     {title:"Other income e.g. rental income Specify type"},
 ]
 
+//21
 export const expenses = [
     {title: "Food & Groceries"},
     {title: "Home/Utilities/Whitegoods/Repairs"},
@@ -33,6 +35,7 @@ export const expenses = [
     {title: "Other"},
 ]
 
+//9
 export const assets = [
    {title: "Residnetial property - Specify address"},
    {title: "Investment property -  Specify address"},
@@ -43,5 +46,19 @@ export const assets = [
    {title: "Household funiture"},
    {title: "Shares"},
    {title: "Other - Specify"},
+]
+export const liabilities = [
+    {title: "Rent/Board"},
+    {title: "Residential Mortgage"},
+    {title: "Investment Mortgage"},
+    {title: "Secured Loan with"},
+    {title: "Secured Loan with"},
+    {title: "Personal/Unsecured Loan with"},
+    {title: "Personal/Unsecured Loan with"},
+    {title: "Credit Card with"},
+    {title: "Credit Card with"},
+    {title: "Credit Card with"},
+    {title: "Credit Card with"},
+    {title: "Other - Specify"}
 ]
 

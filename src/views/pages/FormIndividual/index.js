@@ -10,13 +10,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import PriceInput from '../../components/Form/PriceInput';
 import TextInput from '../../components/Form/TextInput';
+import DatePicker from '../../components/Form/DatePicker';
 import { useHistory } from 'react-router-dom';
-import { borrowerOne, expenses, assets } from '../../utils/questions';
+import { borrowerOne, expenses, assets, liabilities } from '../../utils/questions';
 
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-      width: '100%'
+      // width: '100%'
   },
   root: {
       marginTop: theme.spacing(3),
@@ -148,7 +149,7 @@ function FormIndividual() {
 
         {covid&&
           expenses.map((item, index)=>{
-            var distance = 0
+            var distance = 8
             if(twoperson==='false'){
               distance = 8
             } else {
@@ -196,9 +197,71 @@ function FormIndividual() {
             }
           })        
         }
+
+        {covid&&
+          liabilities.map((item, index)=>{
+            var distance = 0
+            if(twoperson==='false'){
+              distance = 38
+            } else {
+              distance = 46
+            }
+            if(step===index+distance && item.title === 'Rent/Board'){
+              return(
+                <StyledWidthDiv>
+                  <h4>Liabilities</h4>
+                  <PriceInput title='Monthly Repayment' />
+                </StyledWidthDiv> 
+              )
+            } else if (step===index+distance && (
+              item.title === 'Residential Mortgage' ||
+              item.title === 'Investment Mortgage')){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Liabilities</h4>
+                    <h5>{item.title}</h5>
+                    <TextInput title='With'  />
+                    <PriceInput title='Original loan amount'/>
+                    <PriceInput title='Current rate' percent="%"/>
+                    <PriceInput title='Original term' years="Years"/>
+                    <DatePicker title='Date Account Opened'/>
+                    <PriceInput title='Balance Outstanding'/>
+                    <PriceInput title='Monthly Repayment'/>
+                  </StyledWidthDiv> 
+                )
+            } else if (step===index+distance && (
+              item.title === 'Secured Loan with' ||
+              item.title === 'Personal/Unsecured Loan with'||
+              item.title === 'Other - Specify')){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Liabilities</h4>
+                    <h5>{item.title}</h5>                    
+                    <DatePicker title='Date Account Opened'/>
+                    <PriceInput title='Balance Outstanding'/>
+                    <PriceInput title='Monthly Repayment'/>
+                  </StyledWidthDiv> 
+                )
+            } else if (step===index+distance && (
+              item.title === 'Credit Card with')){
+                return(
+                  <StyledWidthDiv>
+                    <h4>Liabilities</h4>
+                    <h5>{item.title}</h5>
+                    <TextInput title={item.title}  />
+                    <PriceInput title='Credit limit'/>
+                    <DatePicker title='Date Account Opened'/>
+                    <PriceInput title='Balance Outstanding'/>
+                    <PriceInput title='Monthly Repayment'/>
+                  </StyledWidthDiv> 
+                )
+            }
+            
+          })        
+        }
         <StyledDiv>
           <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
-              BEFORE
+              BACK
           </Button> 
           <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>next()}>
               Next

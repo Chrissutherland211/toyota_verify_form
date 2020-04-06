@@ -28,7 +28,7 @@ function PriceInput(props) {
                     id="standard-adornment-amount"
                     // value={values.amount}
                     // onChange={handleChange('amount')}
-                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                    startAdornment={<InputAdornment position="start">{props.percent?'%': props.years?'Years':'$'}</InputAdornment>}
                 />
             </FormControl>
         </form>

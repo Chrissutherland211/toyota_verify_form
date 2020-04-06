@@ -8,4 +8,7 @@ export const StyledDiv = styled.div`
 
 export const StyledWidthDiv = styled.div`
     width: 415px;
+    @media (max-width: 425px) {
+        width: 100%;
+    }
 `
