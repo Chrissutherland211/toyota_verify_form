@@ -15,27 +15,26 @@ const useStyles = makeStyles((theme) => ({
     color:'black'
   },
   root: {
-    // MozBoxShadow:'0px 0px 20px 1px rgba(181,181,181,1)',
-    // boxShadow: '0px 0px 20px 1px rgba(181,181,181,1)',
     marginTop: theme.spacing(3),
     marginLeft: 0,
     marginRight:0,
     height: '60px',
     backgroundColor: "#ebebec",
-    
+    borderRadius: '3px;',
     '&:hover': {
       background: "#fff",
+      boxShadow: '1px 2px 6px 0 rgba(34,34,34,.15)',
     },
   },
 }));
 
-export default function ErrorRadios() {
+export default function ErrorRadios(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = React.useState(true);
     const dispatch = useDispatch();
     const handleRadioChange = (event) => {
         setValue(event.target.value);
-        isContractNumber(event.target.value, dispatch);
+        props.method(event.target.value, dispatch);
         console.log(value)
     };    
 

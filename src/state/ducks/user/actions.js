@@ -12,8 +12,13 @@ export const setEmail = (email, dispatch) => (dispatch({
     payload: email
 }));
 
-export const isContractNumber = (payload, dispatch) => (dispatch({
+export const isContractNumbers = (payload, dispatch) => (dispatch({
     type: types.IS_CONTRACT_NUMBER,
+    payload: payload
+}));
+
+export const isRegisterNumbers = (payload, dispatch) => (dispatch({
+    type: types.IS_REGISTER_NUMBER,
     payload: payload
 }));
 

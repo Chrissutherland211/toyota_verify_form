@@ -4,7 +4,13 @@ import createReducer from "../../utils/createReducer";
 
 import { getUserType } from "../../../utilities";
 
-const initialState = {};
+const initialState = {
+  email:'',
+  isContractNumber:'',
+  isRegisterNumber:null,
+  contractNumber:null,
+  registerNumber:null
+};
 
 const signInReducer = createReducer(initialState)({
     [types.SIGN_IN]: ({ token }) => {
@@ -20,19 +26,25 @@ const signInReducer = createReducer(initialState)({
     },
     [types.SET_EMAIL]: (state, { payload }) => {  
       return {
-        ...initialState,
+        ...state,
         email: payload
       };
     },
     [types.IS_CONTRACT_NUMBER]: (state, { payload }) => {  
       return {
-        ...initialState,
+        ...state,
         isContractNumber: payload
+      };
+    },
+    [types.IS_REGISTER_NUMBER]: (state, { payload }) => {  
+      return {
+        ...state,
+        isRegisterNumber: payload
       };
     },
     [types.SET_CONTRACT_NUMBER]: (state, { payload }) => {  
       return {
-        ...initialState,
+        ...state,
         contractNumber: payload
       };
     },

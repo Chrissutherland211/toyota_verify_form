@@ -2,3 +2,15 @@
     font-family: "Toyota font";
     src: url(./static/font/avenirltstd-black.otf);
 }
+
+@font-face {
+    font-family: "ToyotaType, Helvetica Neue ,Helvetica,Arial,sans-serif";
+    src: url(./static/font/HelveticaNeue\ Light.ttf);
+}
+
+@media screen and (max-width: 475px){
+    .MuiFormControl-root,
+    .makeStyles-root-1 {
+        width: 280px !important;
+    }
+}

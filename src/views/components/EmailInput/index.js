@@ -12,7 +12,7 @@ import InputIcon from '@material-ui/icons/Input';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {setEmail} from '../../../state/ducks/user/actions';
 import themes from '../../../utilities/theme';
-import { green } from '@material-ui/core/colors';
+import green from '@material-ui/core/colors/green';
 
 const useStyles = makeStyles((theme) => ({    
     root: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
     },
     textField: {
-        width: '25ch',
+        width: '10ch',
     },
     width: {
         maxWidth: '300px',
@@ -73,6 +73,7 @@ export default function InputAdornments(props) {
             setValues({ ...values, emailValid: true });
         }    
     }
+
     const theme = createMuiTheme({
         palette: {
             primary: green,
@@ -82,7 +83,6 @@ export default function InputAdornments(props) {
 
     return (      
             <div className={classes.root}>  
-                <ThemeProvider theme={theme}>
                 <FormControl error={values.emailValid&&true} className={clsx(classes.margin, classes.textField, classes.width)} variant="outlined">
                 <InputLabel 
                     error={values.emailValid&&true} 
@@ -114,7 +114,6 @@ export default function InputAdornments(props) {
                     labelWidth={70}
                 />
                 </FormControl>     
-                </ThemeProvider>        
             </div>
     );
 }
