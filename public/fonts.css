@@ -9,6 +9,7 @@
 }
 
 @media screen and (max-width: 475px){
+    .makeStyles-root-2,
     .MuiFormControl-root,
     .makeStyles-root-1 {
         width: 100% !important;

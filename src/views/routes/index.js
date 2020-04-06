@@ -13,6 +13,9 @@ import RegisterInput from "../pages/RegisterInput";
 import HardShip from "../pages/Hardship";
 import RelatedCovid from "../pages/RelatedCovid";
 import CommercialLoan from "../pages/CommercialLoan";
+import BusinessInput from "../pages/BusinessInput";
+import Circumstances from "../pages/Circumstances";
+import Form from "../pages/Form";
 import green from '@material-ui/core/colors/green';
 
 const theme = createMuiTheme({
@@ -32,9 +35,12 @@ function Router() {
                 <Route exact path="/hardship" component={HardShip} />
                 <Route exact path="/related_covid" component={RelatedCovid} />
                 <Route exact path="/commercial_loan" component={CommercialLoan} />
+                <Route exact path="/business_input" component={BusinessInput} />
+                <Route exact path="/circumstances" component={Circumstances} />
+                <Route exact path="/form" component={Form} />
                 <Route exact path="/registration_number_input" component={RegisterInput} />
-                <PrivateRoute exact path="/form_individual" component={FormIndividual} />
-                <PrivateRoute exact path="/form_commercial" component={FormCommercial} />
+                <Route exact path="/form_individual" component={FormIndividual} />
+                <Route exact path="/form_commercial" component={FormCommercial} />
             </Switch>
         </MuiThemeProvider>
     )

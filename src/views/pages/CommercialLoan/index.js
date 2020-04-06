@@ -56,9 +56,11 @@ function CommercialLoan() {
     const data = useSelector(store=>store.brand, shallowEqual)
     const goHardship = () => {
         if(value==='true'){
-            // history.push('./registration_number_input')
+            localStorage.setItem('individual','true')
+            history.push('/business_input')
         } else if(value==='false'){
-            history.push('./hardship')
+            localStorage.setItem('individual','false')
+            history.push('/circumstances')
         }
     }
 

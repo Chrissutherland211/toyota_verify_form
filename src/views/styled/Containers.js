@@ -19,10 +19,28 @@ export const StyledContentContainer = styled.div`
     padding-bottom: 35px;
     background-color: ${props=>props.color};
 
+    & h1 {
+        font-family: Toyota font;
+        font-weight: 600;
+        font-size: 28px;
+        color: '#222';
+        line-height: 30px;
+        letter-spacing:0;
+        margin: 0 0 10px 0;
+    }
+
     & h4 {
         font-family: Toyota font;
         font-weight: 600;
         font-size: 24px;
+        color: '#222';
+        line-height: 30px;
+        letter-spacing:0;
+        margin: 0 0 10px 0;
+    }
+
+    & h5 {
+        font-family: Toyota font;        
         color: '#222';
         line-height: 30px;
         letter-spacing:0;

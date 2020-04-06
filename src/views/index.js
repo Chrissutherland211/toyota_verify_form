@@ -6,6 +6,7 @@ import history from "./history";
 import Route from "./routes";
 
 function App() {
+  localStorage.setItem('step', 0)
   return (
     <Container>
       <Header />
