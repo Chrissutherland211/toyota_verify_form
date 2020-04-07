@@ -6,7 +6,7 @@ function ButtonGroup(props){
     return(
         <StyledDiv>
             <Button variant="contained" color="secondary"   onClick={props.before}>
-                Before
+                Back
             </Button> 
             <Button variant="contained" color="secondary"   onClick={props.next}>
                 Next

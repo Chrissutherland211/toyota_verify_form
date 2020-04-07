@@ -100,7 +100,7 @@ function Circumstances() {
     const handleIndustryChange = (event) => {
         setAge(event.target.value);
     };
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [selectedDate, setSelectedDate] = React.useState(null);
     const handleDateChange = (date) => {
     setSelectedDate(date);
     };
