@@ -77,7 +77,7 @@ function FinanceProtection(props) {
                                         <DatePicker />
                                     </div>
                                 }
-                                <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/>
+                                {/* <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/> */}
                             </RadioGroup>        
                         </FormControl> 
                     </>

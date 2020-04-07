@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { StyledContentContainer } from '../../styled/Containers';
-import { StyledFormContainer } from '../../components/Form/style';
-import theme from '../../../utilities/theme';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { useHistory } from 'react-router-dom';
+import { StyledContentContainer } from '../../../styled/Containers';
+import { StyledFormContainer } from '../../../components/Form/style';
+import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import {useHistory} from 'react-router-dom';
-import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import theme from '../../../../utilities/theme';
+import ButtonGroup from '../../../components/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
         width: '100%'
+    },
+    colorPrimary: {
+        color:'black'
     },
     root: {
         marginTop: theme.spacing(3),
@@ -25,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#ebebec",
         borderRadius: '3px;',
         '&:hover': {
-          background: "#fff",
-          boxShadow: '1px 2px 6px 0 rgba(34,34,34,.15)',
+            background: "#fff",
+            boxShadow: '1px 2px 6px 0 rgba(34,34,34,.15)',
         },
-      },
+    },
     button: {
         marginTop: '80px',
         width: '100%',
@@ -42,53 +45,43 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Form() {
-    const data = useSelector(store=>store.brand, shallowEqual)
-    const classes = useStyles();
-    const [value, setValue] = React.useState('');
+function CommercialLoan() {
     const history = useHistory();
-    
-    const individual = localStorage.getItem('individual')
-   
+    const classes = useStyles();
+    const [value, setValue] = React.useState(true);
     const handleRadioChange = (event) => {
         setValue(event.target.value);
-        localStorage.setItem('twoperson',event.target.value)
-    };
-    const goNext = () => {
+        // isContractNumbers(event.target.value, dispatch);
+        console.log(value)
+    }; 
+    const data = useSelector(store=>store.brand, shallowEqual)
+    const goHardship = () => {
         if(value==='true'){
-            history.push('/form_individual')
+            localStorage.setItem('covid_individual','true')
+            history.push('/covid_form')
         } else if(value==='false'){
-            history.push('/form_individual')
-        }       
+            localStorage.setItem('covid_individual','false')
+            history.push('/covid_form')
+        }
     }
-    return(
+    const before=()=>{
+        history.goBack()
+    }
+
+    return ( 
         <StyledContentContainer color={theme.palette[data.brand].background_color}>
             <StyledFormContainer>
-                <h1 style={{marginBottom:'60px'}}>Monthly Income Details</h1>   
-                {individual?
-                <>
-                <h4>
-                    Does your loan involve two borrowers?
-                </h4>
+                <h4>Is the loan a commercial loan, in the name of a Company?</h4>
                 <FormControl component="fieldset" className={classes.formControl}>       
                     <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
                     <FormControlLabel value="true" control={<Radio />} label="Yes" className={classes.root}/>
                     <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/>
                     </RadioGroup>        
                 </FormControl>
-                </>
-                :
-                <h4>Does your loan involve two directors/guarantors? </h4>
-                }
-                
-                <div className={classes.button}>
-                    <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>goNext()}>
-                        Next
-                    </Button>  
-                </div>      
+                <ButtonGroup before={before} next={goHardship} />
             </StyledFormContainer>
         </StyledContentContainer>
     );
 };
 
-export default Form;
+export default CommercialLoan;

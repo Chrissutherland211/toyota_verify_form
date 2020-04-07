@@ -1,12 +1,10 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import {useHistory} from 'react-router-dom';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import PriceInput from '../PriceInput';
 import FileUpload from '../FileUpload';
 import TextInput from '../TextInput';
 
@@ -51,25 +49,13 @@ function Circumstances(props) {
              
             <FormControl component="fieldset" className={classes.formControl}>       
                 <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                <FormControlLabel value="have_personal_diagnosed" control={<Radio />} label="I have personally been medically diagnosed with COVID-19" className={classes.root}/>
-                {value==='have_personal_diagnosed'&&
-                    <FileUpload title="Uplaod Medical Certificate"/>
-                }
-                <FormControlLabel value="dependent" control={<Radio />} label="A dependent or person close to me has been diagnosed with COVID-19" className={classes.root}/>
-                {value==='dependent'&&
-                    <FileUpload title="Uplaod Medical Certificate & Evidence of Relationship"/>
-                }
-                <FormControlLabel value="cased_employment" control={<Radio />} label="My employment has ceased due to COVID-19" className={classes.root}/>
-                {value==='cased_employment'&&
-                    <FileUpload title="Uplaod Payslip & Terminal Letter / Notice"/>
-                }
-                <FormControlLabel value="reduced_employment" control={<Radio />} label="My employment has reduced due to COVID-19" className={classes.root}/>
-                {value==='reduced_employment'&&
-                    <FileUpload title="Uplaod Payslip & Bank Statement"/>
-                }
+                <FormControlLabel value="information" control={<Radio />} label="Please provide evidence of your hardship such as a Separation Certificate or medical certificate or similar" className={classes.root}/>
+                {value==='information'&&
+                    <FileUpload title="Upload Separation Certificate or medical certificate"/>
+                }                
                 <FormControlLabel value="other" control={<Radio />} label="Other" className={classes.root}/>
                 {value==='other'&&
-                    <TextInput title="Other (Free Text)" />
+                    <TextInput title="Briefly Describe your circumstances" />
                 }                
                 </RadioGroup>        
             </FormControl>       

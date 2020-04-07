@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ReactCodeInput from 'react-verification-code-input';
 import { setContractNumber } from '../../../state/ducks/user/actions';
+import { parseWithOptions } from 'date-fns/fp';
 
 
-function ContractInput() {
+function ContractInput(props) {
     const history = useHistory();
     const dispatch = useDispatch();
     const sendCode = (value) => {
@@ -13,7 +14,7 @@ function ContractInput() {
         // history.push('/hardship')
     }
     return(
-        <ReactCodeInput fields={8} fieldWidth={"12%"} onComplete={sendCode}/>
+        <ReactCodeInput fields={props.fields} fieldWidth={props.width} onComplete={sendCode}/>
     );
 };
 

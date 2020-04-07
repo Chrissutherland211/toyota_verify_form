@@ -1,21 +1,21 @@
 // 8
 export const borrowerOne =  [
-    {title:"After tax salary per month"},
-    {title:"Pension"},
-    {title:"Family allowance"},
-    {title:"Newstart allowance"},
-    {title:"Partner’s income (if applicable)"},
-    {title:"Child support"},
-    {title:"Other government benefits"},
-    {title:"Other income e.g. rental income Specify type"},
+    {title:"After tax salary per month", id:'after_tax_salary_per_month'},
+    {title:"Pension", id:'pension'},
+    {title:"Family allowance", id:'family_allowance'},
+    {title:"Newstart allowance", id:'newstart_allowance'},
+    {title:"Partner’s income (if applicable)", id:'parter_income'},
+    {title:"Child support", id:'child_support'},
+    {title:"Other government benefits", id:'other_government_benefits'},
+    {title:"Other income e.g. rental income Specify type", id:'other_income_rental_income_specify_type'},
 ]
 
 //21
 export const expenses = [
-    {title: "Food & Groceries"},
-    {title: "Home/Utilities/Whitegoods/Repairs"},
-    {title: "Public Schooling/Higher Education"},
-    {title: "Personal/Health Care & Pet Care"},
+    {title: "Food & Groceries", id:'food_groceries'},
+    {title: "Home/Utilities/Whitegoods/Repairs", id:'home_utilities_whitegoods_repairs'},
+    {title: "Public Schooling/Higher Education", id:'public_schooling_higher_education'},
+    {title: "Personal/Health Care & Pet Care", id:'personal_health_care_pet_care'},
     {title: "Clothing/Footwear-Dependents"},
     {title: "Communication & Connectivity"},
     {title: "Insurance-House & Contents"},
@@ -85,6 +85,7 @@ export const proposalAssistance = [
     { title: 'Extend the loan term to reduce ongoing payments'},
     { title: 'Other'},
 ]
+
 export const backgroundHardshipCovid = [
     { title: 'Select the option that best describes you circumstances'},
     {title: "Approximately what date did these financial Difficulties start?"},
@@ -99,4 +100,32 @@ export const backgroundHardshipContCovid = [
     {title: 'My employment or Income has reduced due to COVID-19'},
     {title: 'Other'}
 ]
+
+export const backgroundHardshipContCovidLoan = [
+    {title: 'I have personally been medically diagnosed with COVID-19'},
+    {title: 'A dependent or person close to me has been diagnosed with COVID-19'},
+    {title: 'My employment or Income has ceased due to COVID-19'},
+    {title: 'Other'}
+]
+
+
+export const userData = {
+    email: '',
+    contract_number:'',
+    name:'',
+    phone_number:'',
+    dob:'',
+    registration_number:'',
+    hardship_issue:'',
+    company_name:'',
+    abn:'',
+    registered_company:'',
+    anzsic:'',
+    marital_status:'',
+    number_dependents:'',
+    current_employer_name:'',
+    current_employer_abn:'',
+    current_employer_anzsic:'',
+
+}
 

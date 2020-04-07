@@ -59,13 +59,13 @@ function Circumstances(props) {
                 {value==='dependent'&&
                     <FileUpload title="Uplaod Medical Certificate & Evidence of Relationship"/>
                 }
-                <FormControlLabel value="cased_employment" control={<Radio />} label="My employment has ceased due to COVID-19" className={classes.root}/>
+                <FormControlLabel value="cased_employment" control={<Radio />} label="My revenue has ceased due to COVID-19" className={classes.root}/>
                 {value==='cased_employment'&&
-                    <FileUpload title="Uplaod Payslip & Terminal Letter / Notice"/>
+                    <FileUpload title="Uplaod Bank Statement & Letter from the Account"/>
                 }
-                <FormControlLabel value="reduced_employment" control={<Radio />} label="My employment has reduced due to COVID-19" className={classes.root}/>
+                <FormControlLabel value="reduced_employment" control={<Radio />} label="My revenue has reduced due to COVID-19" className={classes.root}/>
                 {value==='reduced_employment'&&
-                    <FileUpload title="Uplaod Payslip & Bank Statement"/>
+                    <FileUpload title="Uplaod Bank Statement & Letter from the Account"/>
                 }
                 <FormControlLabel value="other" control={<Radio />} label="Other" className={classes.root}/>
                 {value==='other'&&

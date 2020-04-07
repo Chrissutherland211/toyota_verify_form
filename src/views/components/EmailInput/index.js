@@ -1,23 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
-import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
-import InputIcon from '@material-ui/icons/Input';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import {setEmail} from '../../../state/ducks/user/actions';
-import themes from '../../../utilities/theme';
 import green from '@material-ui/core/colors/green';
+import Button from '@material-ui/core/Button';
+import {userData} from '../../utils/questions';
 
 const useStyles = makeStyles((theme) => ({    
     root: {
         display: 'flex',
-        flexWrap: 'wrap',        
+        flexWrap: 'wrap',  
+        width: '100%'      
     },
     margin: {
         margin: theme.spacing(1),
@@ -29,17 +26,27 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '300px',
         width: '100%',
         minWidth:'200px'        
+    },
+    button: {
+        marginTop: '80px',
+        width: '100%',
+        '& .MuiButtonBase-root': {
+            width: '100%',
+            borderRadius: '20px'
+        }
+    },
+    color: {
+        backgroundColor: "#eb0a1e"
     }
 }));
 
 export default function InputAdornments(props) {
     const data = useSelector(store=>store.user)
     const classes = useStyles(data);
-    const dispatch = useDispatch(data);
     
     const history = useHistory();
     const [values, setValues] = React.useState({
-        amount: '',
+        email: '',
         password: '',
         weight: '',
         weightRange: '',
@@ -47,39 +54,28 @@ export default function InputAdornments(props) {
         emailValid: false,
     });
 
-    const handleChange = (prop) => (event) => {
-        setEmail(event.target.value, dispatch)
+    const handleChange = (prop) => async (event) => {        
         validateField(event.target.value)
     };
 
-    const handleClicksendEmail = () => {
-            console.log(data)
-        if(!values.emailValid && data.email){
-            setValues({ ...values, sendEmail: true });
-            history.push('/contact_number')
-        }
-    };
-
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
     const validateField = ( value) => {      
-        const validated = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        console.log(validated, value)
+        const validated = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);        
         if(validated){
-            setValues({ ...values, emailValid: false });        
+            setValues({ ...values, emailValid: false, email: value });        
         } else {
             setValues({ ...values, emailValid: true });
         }    
     }
 
-    const theme = createMuiTheme({
-        palette: {
-            primary: green,
-          },
-    });
-    
+    const next = async () => {
+        console.log({...userData, email:values.email })
+        if(!values.emailValid && values.email){
+            await localStorage.setItem('userData', JSON.stringify({...userData, email:values.email }))
+            const data = await localStorage.getItem('userData')
+            await console.log(JSON.parse(data).email)
+            history.push('/contact_number')
+        }
+    }   
 
     return (      
             <div className={classes.root}>  
@@ -92,28 +88,15 @@ export default function InputAdornments(props) {
                 <OutlinedInput
                     id="outlined-adornment-password"
                     type={values.sendEmail ? 'text' : 'email'}
-                    onChange={handleChange('password')}                
-                    endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClicksendEmail}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                        >
-                        {values.sendEmail ? 
-                        <CircularProgress
-                            variant="indeterminate"
-                            disableShrink
-                            size={24}
-                            thickness={4}
-                        /> : <InputIcon />}
-                        </IconButton>
-                    </InputAdornment>
-                    }
+                    onChange={handleChange('password')}            
                     labelWidth={70}
                 />
-                </FormControl>     
+                </FormControl> 
+                <div className={classes.button}>
+                <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>next()}>
+                    Next
+                </Button>  
+            </div>      
             </div>
     );
 }

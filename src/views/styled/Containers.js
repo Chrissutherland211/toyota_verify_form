@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from './constants/colors';
 
 export const Container = styled.div`
     display: flex;
@@ -6,6 +7,19 @@ export const Container = styled.div`
     height: 100%;
     width: 100%;
     background-color: ${props=>props.color}    
+`
+
+export const StyledDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+
+    & button {
+        width: 40%;
+        border-radius: 20px;
+        background-color: ${colors.buttonColor}
+    }
 `
 
 export const StyledContentContainer = styled.div`  

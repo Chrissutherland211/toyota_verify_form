@@ -3,11 +3,10 @@ import { useSelector, shallowEqual } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import {useHistory} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { StyledContentContainer } from '../../styled/Containers';
-import { StyledFormContainer } from '../../components/Form/style';
-import Button from '@material-ui/core/Button';
-import CodeInput from '../../components/ContractInput';
-import theme from '../../../utilities/theme';
+import { StyledContentContainer } from '../../../styled/Containers';
+import { StyledFormContainer } from '../../../components/Form/style';
+import CodeInput from '../../../components/ContractInput';
+import theme from '../../../../utilities/theme';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -16,6 +15,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import ButtonGroup from '../../../components/ButtonGroup';
+
+import {
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formIndustryControl: {
         width: '100%',
-        marginTop: '60px',
+        marginTop: '30px',
     },
     formMaritalControl : {
         marginTop: '20px',
@@ -81,44 +85,69 @@ function Circumstances() {
     const data = useSelector(store=>store.brand, shallowEqual)
     const classes = useStyles();
     const history = useHistory();
-    const [value, setValue] = React.useState({
-        value: false,
-        marital: false,
-        industry: false
-    });
+  
     const [age, setAge] = React.useState('');
-    const goHardship = () => {
+    const [marry, setMarry] = React.useState('');
+    const next = () => {
         history.push('/form')
     }
-    const [checked, setChecked] = React.useState(true);
-
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
-    const handleRadioChange = async (event) => {
-        setValue({...value, marital: event.target.value}); 
-        // isContractNumbers(event.target.value, dispatch);
-        console.log(value)
-    }; 
-    const handleCheckChange = (event) => {
-        setValue({value: event.target.value, industry: event.target.value});      
-        // isContractNumbers(event.target.value, dispatch);
+    const before = () => {
+        history.goBack()
+    }   
+    const handleMarryChange = (event) => {
+        setMarry(event.target.value);
     };
     const handleIndustryChange = (event) => {
         setAge(event.target.value);
-      };
+    };
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const handleDateChange = (date) => {
+    setSelectedDate(date);
+    };
     return ( 
         <StyledContentContainer color={theme.palette[data.brand].background_color}>
             <StyledFormContainer>
                 <h4>Can you tell us a bit more about your circumstances?</h4>
-                <h5 style={{marginTop:'60px', marginBottom:'10px'}}>Marital Status </h5>
-                <FormControl component="fieldset" className={classes.formMaritalControl}>       
-                    <RadioGroup aria-label="quiz" name="quiz" value={value.marital} onChange={handleRadioChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="Yes" className={classes.option}/>
-                    
-                     
-                    <FormControlLabel value="false" control={<Radio />} label="No" className={classes.option}/>
-                    </RadioGroup>        
+                <form className={classes.root} validate autoComplete="off">
+                    <TextField
+                        id="standard-textarea"
+                        label="Name (Given Name & Surname)*"
+                        multiline
+                    />   
+                </form> 
+                <form className={classes.root} validate autoComplete="off">
+                    <TextField
+                        id="standard-textarea"
+                        label="Phone Number*"
+                        multiline
+                    />   
+                </form> 
+                <form className={classes.root} validate autoComplete="off">
+                    <KeyboardDatePicker
+                        margin="normal"
+                        id="date-picker-dialog"
+                        label="DOB*"
+                        format="dd/MM/yyyy"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                        }}
+                        />
+                </form> 
+                <FormControl className={classes.formIndustryControl}>
+                    <InputLabel id="demo-simple-select-label">Marital Status</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        // value={age}
+                        onChange={handleMarryChange}
+                    >
+                    <MenuItem value='married'>Married</MenuItem>
+                    <MenuItem value='3_dependants'>3 dependants</MenuItem>
+                    <MenuItem value='marios_meats'>Marios Meats</MenuItem>
+                    <MenuItem value='meat_industry'>Meat Industry</MenuItem>
+                    </Select>
                 </FormControl>
                 <form className={classes.root} validate autoComplete="off">
                     <TextField
@@ -127,17 +156,17 @@ function Circumstances() {
                         multiline
                     />   
                 </form> 
-                <h5 style={{marginTop:'60px', marginBottom:'10px'}}>Current or Most Recent Employer’s name + Optional ABN</h5>
-                <FormControl component="fieldset" className={classes.formMaritalControl}>       
-                    <RadioGroup aria-label="quiz" name="quiz" value={value.value} onChange={handleCheckChange}>
-                    <FormControlLabel value="true" control={<Radio />} label="Info" className={classes.option}/>
-                    
-                     
-                    <FormControlLabel value="false" control={<Radio />} label="You can find your employer’s ABN on your payslip" className={classes.option}/>
-                    </RadioGroup>        
-                </FormControl>
-               
-                
+                <form className={classes.root} validate autoComplete="off">
+                    <TextField
+                        id="standard-textarea"
+                        label="Most Recent Employer’s name*"
+                        multiline
+                    />   
+                </form>
+                <form className={classes.root} validate autoComplete="off" style={{marginTop:'64px'}}>
+                    <h5>ABN (you can find your employer’s ABN on your payslip)</h5>
+                    <CodeInput fields={11} width="9%"/> 
+                </form>            
                 <FormControl className={classes.formIndustryControl}>
                     <InputLabel id="demo-simple-select-label">Most Recent Employer Industry</InputLabel>
                     <Select
@@ -150,13 +179,7 @@ function Circumstances() {
                     
                     </Select>
                 </FormControl>
-                  
-                
-                <div className={classes.button}>                
-                    <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>goHardship()}>
-                        Next
-                    </Button>  
-                </div>  
+                <ButtonGroup next={next} before={before} /> 
             </StyledFormContainer>
         </StyledContentContainer>
     );

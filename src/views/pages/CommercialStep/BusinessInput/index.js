@@ -3,11 +3,11 @@ import { useSelector, shallowEqual } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import {useHistory} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { StyledContentContainer } from '../../styled/Containers';
-import { StyledFormContainer } from '../../components/Form/style';
+import { StyledContentContainer } from '../../../styled/Containers';
+import { StyledFormContainer } from '../../../components/Form/style';
 import Button from '@material-ui/core/Button';
-import CodeInput from '../../components/ContractInput';
-import theme from '../../../utilities/theme';
+import CodeInput from '../../../components/ContractInput';
+import theme from '../../../../utilities/theme';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -16,6 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import ButtonGroup from '../../../components/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -25,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     },
     formIndustryControl: {
         width: '100%',
-        marginLeft: '30px',
         marginBottom: '20px'
     },
     root: {
@@ -83,8 +83,11 @@ function BusinessInput() {
         industry: false
     });
     const [age, setAge] = React.useState('');
-    const goHardship = () => {
+    const next = () => {
         history.push('/circumstances')
+    }
+    const before = () => {
+        history.goBack()
     }
     const [checked, setChecked] = React.useState(true);
 
@@ -114,15 +117,9 @@ function BusinessInput() {
                     />   
                 </form> 
                 <FormControl component="fieldset" className={classes.formControl}>       
-                    <RadioGroup aria-label="quiz" name="quiz" value={value.value} onChange={handleCheckChange}>
-                    <FormControlLabel value="true" control={<Checkbox
-                        checked={checked}
-                        onChange={handleChange}
-                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                    />} 
-                    label="ABN" 
-                    className={classes.check}/>
-                    </RadioGroup>        
+                   
+                    <h5>ABN</h5>
+                    <CodeInput width="9%" fields={11}/>
                 </FormControl>
                 <h4 style={{marginTop:'60px'}}>Is the company/business still registered and trading?</h4>
                 <FormControl component="fieldset" className={classes.formControl}>       
@@ -146,11 +143,7 @@ function BusinessInput() {
                     </RadioGroup>        
                 </FormControl>
                 
-                <div className={classes.button}>                
-                    <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>goHardship()}>
-                        Next
-                    </Button>  
-                </div>  
+                <ButtonGroup next={next} before={before}/>
             </StyledFormContainer>
         </StyledContentContainer>
     );

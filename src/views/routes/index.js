@@ -2,20 +2,20 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "../utils/hoc/PrivateRoute";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import themes from '../../utilities/theme/themes';
 import VerifyEmail from '../pages/VerifyEmail';
 import FormIndividual from "../pages/FormIndividual";
-import FormCommercial from "../pages/FormCommercial";
-import ContactNumber from "../pages/ContactNumber";
-import ContractNumber from "../pages/ContractNumber";
-import RegisterNumber from "../pages/RegisterNumber";
-import RegisterInput from "../pages/RegisterInput";
-import HardShip from "../pages/Hardship";
-import RelatedCovid from "../pages/RelatedCovid";
-import CommercialLoan from "../pages/CommercialLoan";
-import BusinessInput from "../pages/BusinessInput";
-import Circumstances from "../pages/Circumstances";
-import Form from "../pages/Form";
+import ContactNumber from "../pages/BeginApplicationStep/ContactNumber";
+import ContractNumber from "../pages/BeginApplicationStep/ContractNumber";
+import RegisterNumber from "../pages/BeginApplicationStep/RegisterNumber";
+import RegisterInput from "../pages/BeginApplicationStep/RegisterInput";
+import HardShip from "../pages/ResonApplyingStep/Hardship";
+import RelatedCovid from "../pages/ResonApplyingStep/RelatedCovid";
+import CommercialLoan from "../pages/CommercialStep/CommercialLoan";
+import BusinessInput from "../pages/CommercialStep/BusinessInput";
+import Circumstances from "../pages/CommercialStep/Circumstances";
+import CovidForm from "../pages/CovidForm";
+import Form from "../pages/CommercialStep/Form";
+import CovidCommercailLoan from '../pages/ResonApplyingStep/CommercialLoan';
 import green from '@material-ui/core/colors/green';
 
 const theme = createMuiTheme({
@@ -38,9 +38,10 @@ function Router() {
                 <Route exact path="/business_input" component={BusinessInput} />
                 <Route exact path="/circumstances" component={Circumstances} />
                 <Route exact path="/form" component={Form} />
+                <Route exact path="/covid_form" component={CovidForm} />
+                <Route exact path="/covid_commercial_loan" component={CovidCommercailLoan} />
                 <Route exact path="/registration_number_input" component={RegisterInput} />
                 <Route exact path="/form_individual" component={FormIndividual} />
-                <Route exact path="/form_commercial" component={FormCommercial} />
             </Switch>
         </MuiThemeProvider>
     )

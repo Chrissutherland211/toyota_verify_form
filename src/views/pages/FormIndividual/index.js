@@ -16,7 +16,7 @@ import DatePicker from '../../components/Form/DatePicker';
 import AccidentResult from '../../components/Form/AccidentResult';
 import FinanceProtection from '../../components/Form/FinanceProtection';
 import FileUpload from '../../components/Form/FileUpload';
-import Circumstances from '../../components/Form/Circumstances';
+import TBCHardship from '../../components/Form/TBCHardShip';
 import { useHistory } from 'react-router-dom';
 import { borrowerOne, expenses, assets, liabilities, backgroundHardship, backgroundHardshipCont, proposalAssistance, backgroundHardshipCovid, backgroundHardshipContCovid} from '../../utils/questions';
 
@@ -60,7 +60,7 @@ function FormIndividual() {
   const covid = localStorage.getItem('cobid')
   const twoperson = localStorage.getItem('twoperson')
   const localstep = localStorage.getItem('step')
-  const [step, setStep] = React.useState(0)
+  const [step, setStep] = React.useState(54)
   
   // console.log(twoperson)
   const next = async () => {
@@ -72,7 +72,7 @@ function FormIndividual() {
   const before = async () => {
     const currentStep = await localStorage.getItem('step')
     if( currentStep === '0'){
-      history.push('/form')      
+      history.goBack()    
     } else {
       await setStep(parseInt(currentStep)-1)
       await localStorage.setItem('step',parseInt(currentStep)-1)
@@ -86,132 +86,7 @@ function FormIndividual() {
   
   return (
     <StyledContentContainer color={theme.palette[data.brand].background_color}>
-      <StyledFormContainer>
-        {covid==='true'&&
-          backgroundHardshipCovid.map((item, index)=>{
-            if(step===index) {
-              if(index===0){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <Circumstances title={item.title}/>
-                  </>
-                )
-              } else if (index===1 || index===2){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <h5>{item.title}</h5>
-                    <DatePicker title="Date"/>
-                  </>
-                )                
-              } else if (index===3){                
-                return(
-                  <>
-                  {/* <h4>Background to Hardship</h4> */}
-                    <FinanceProtection title={item.title}/>
-                  </>
-                )
-                               
-              }             
-            }
-          })
-        }
-        {covid==='true'&&
-          
-          backgroundHardshipContCovid.map((item, index)=>{
-            var distance = 4
-            
-            if(step===index + distance) {
-              if(index===0){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <h5>{item.title}</h5>
-                    <FileUpload title="Medical Certificate"/>
-                  </>
-                )
-              } else if (index===1){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <h5>{item.title}</h5>
-                    <h5>Medical Certificate & Evidence of relationship:</h5>
-                    <FileUpload title="Birth certificate"/>
-                    <br/>
-                    <FileUpload title="Tenancy agreement"/>
-                  </>
-                )                  
-              } else if (index===2){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <h5>{item.title}</h5>
-                    <h5>Payslip and Termination letter/notice - Individual</h5>
-                    <FileUpload title="Payslip"/>
-                    
-                  </>
-                )                  
-              }  else if (index===3){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <h5>{item.title}</h5>
-                    <h5>Payslip – Individual Bank Statement – Individual & Company Letter from the Accountant - Company</h5>
-                    <FileUpload title="Bank Statement"/>
-                    
-                  </>
-                )                  
-              }  else if (index===4){
-                return(
-                  <>
-                    <h4>Background to Hardship</h4>
-                    <TextInput title={item.title} />                   
-                    
-                  </>
-                )                  
-              }         
-            }
-          })
-        }
-
-        {covid==='true'&&
-          proposalAssistance.map((item, index)=>{
-            var distance = 9
-            if(step===index+distance) {
-              if(index===0 || index===1){
-                return(
-                  <StyledWidthDiv>
-                    <h4>Proposal for assistance</h4>
-                    <h5 style={{marginTop:'60px'}}>{item.title}</h5>
-                    <TextInput title="Specify months"/>                    
-                  </StyledWidthDiv> 
-                )
-              } else if(index===2){
-                return(
-                  <StyledWidthDiv>
-                    <h4>Proposal for assistance</h4>
-                    <CheckBox title={item.title} /> 
-                  </StyledWidthDiv> 
-                )
-              } else if(index===3){
-                return(
-                  <StyledWidthDiv>
-                    <h4>Proposal for assistance</h4>
-                    <CheckBox title={item.title} /> 
-                  </StyledWidthDiv> 
-                )
-              } else if(index===4){
-                return(
-                  <StyledWidthDiv>
-                    <h4>Proposal for assistance</h4>
-                    <TextInput title="Other"/>
-                  </StyledWidthDiv> 
-                )
-              } 
-            }
-          })
-        }
+      <StyledFormContainer>      
         {covid==='false'&& twoperson==='true'&&
           borrowerOne.map((item, index)=>{
             if (step===index && (item.title!=='Other income e.g. rental income Specify type')){
@@ -429,7 +304,7 @@ function FormIndividual() {
                   <>
                     <h4>Background to Hardship</h4>
                     <h5>{item.title}</h5>
-                    <TextInput title="Text"/>
+                    <TBCHardship />
                   </>
                 )
               } else if (index===5){

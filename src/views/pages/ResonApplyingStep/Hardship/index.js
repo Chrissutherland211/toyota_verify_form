@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { StyledContentContainer } from '../../styled/Containers';
-import { StyledFormContainer } from '../../components/Form/style';
-import theme from '../../../utilities/theme';
+import { StyledContentContainer } from '../../../styled/Containers';
+import { StyledFormContainer } from '../../../components/Form/style';
+import theme from '../../../../utilities/theme';
 import {useHistory} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
+import ButtonGroup from '../../../components/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,8 +75,11 @@ function HardShip() {
         setHardship(event.target.value);
 
     };   
-    const goCodiv = () => {
+    const next = () => {
         history.push('/related_covid')
+    }
+    const before=()=>{
+        history.goBack()
     }
     
     return(
@@ -101,11 +104,7 @@ function HardShip() {
                     ))}
                 </TextField>
                 </form>  
-                <div className={classes.button}>
-                    <Button variant="contained" color="secondary" className={classes.color} onClick={()=>goCodiv()}>
-                        Next
-                    </Button>  
-                </div>      
+                <ButtonGroup before={before} next={next} />
             </StyledFormContainer>
         </StyledContentContainer>
     );
