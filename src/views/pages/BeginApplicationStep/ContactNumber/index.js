@@ -60,7 +60,7 @@ function ContactNumber() {
         console.log(value)
     }; 
     const before = () => {
-      history.push('/')
+      history.push('./vehicle_registration')
     } 
     const next = () => {
       if(value==='true'){

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "../utils/hoc/PrivateRoute";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import VerifyEmail from '../pages/VerifyEmail';
+import VehicleRegistration from '../pages/BeginApplicationStep/VehicleRegistration';
 import FormIndividual from "../pages/FormIndividual";
 import ContactNumber from "../pages/BeginApplicationStep/ContactNumber";
 import ContractNumber from "../pages/BeginApplicationStep/ContractNumber";
@@ -29,6 +30,7 @@ function Router() {
         <MuiThemeProvider theme={theme}>
             <Switch>
                 <Route exact path="/" component={VerifyEmail} />
+                <Route exact path="/vehicle_registration" component={VehicleRegistration} />
                 <Route exact path="/contact_number" component={ContactNumber} />
                 <Route exact path="/contract_number" component={ContractNumber} />
                 <Route exact path="/register_number" component={RegisterNumber} />

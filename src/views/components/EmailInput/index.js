@@ -73,7 +73,7 @@ export default function InputAdornments(props) {
             await localStorage.setItem('userData', JSON.stringify({...userData, email:values.email }))
             const data = await localStorage.getItem('userData')
             await console.log(JSON.parse(data).email)
-            history.push('/contact_number')
+            history.push('/vehicle_registration')
         }
     }   
 
