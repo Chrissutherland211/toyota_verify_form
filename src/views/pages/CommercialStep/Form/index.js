@@ -12,6 +12,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import ButtonGroup from '../../../components/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -61,6 +62,9 @@ function Form() {
             history.push('/hardship')
         }       
     }
+    const before = () => {
+        history.goBack()
+    }
     return(
         <StyledContentContainer color={theme.palette[data.brand].background_color}>
             <StyledFormContainer>
@@ -80,12 +84,7 @@ function Form() {
                 :
                 <h4>Does your loan involve two directors/guarantors? </h4>
                 }
-                
-                <div className={classes.button}>
-                    <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>goNext()}>
-                        Next
-                    </Button>  
-                </div>      
+                <ButtonGroup next={goNext} before={before}/>     
             </StyledFormContainer>
         </StyledContentContainer>
     );
