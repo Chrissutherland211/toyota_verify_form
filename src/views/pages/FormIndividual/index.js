@@ -23,7 +23,10 @@ import { borrowerOne, expenses, assets, liabilities, backgroundHardship, backgro
 
 const useStyles = makeStyles((theme) => ({
   color: {
-    backgroundColor: "#eb0a1e"
+    backgroundColor: "#eb0a1e",
+    borderRadius: '20px',
+    width: '40%',
+    marginTop:'60px'
   },
   formControl: {
       // width: '100%'
@@ -397,39 +400,39 @@ function FormIndividual() {
         <StyledDiv>
           {twoperson==='true' && step===69 && covid==='false' ?
             <>
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
+              <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                 BACK
               </Button> 
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}>
+              <Button variant="contained" color="secondary" className={classes.color}>
                   PREVIEW
               </Button>
             </>
             :
             twoperson==='false' && step===62 && covid==='false' ?
             <>
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
+              <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                     BACK
                 </Button> 
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}>
+              <Button variant="contained" color="secondary" className={classes.color}>
                   PREVIEW
               </Button>
             </>
             :
             covid==='true' && step===13 ?
             <>
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
+              <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                     BACK
                 </Button> 
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}>
+              <Button variant="contained" color="secondary" className={classes.color}>
                   PREVIEW
               </Button>
             </>
             :
             <>
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>before()}>
+              <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                   BACK
               </Button> 
-              <Button variant="contained" color="secondary" className={classes.color, classes.button}  onClick={()=>next()}>
+              <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>next()}>
                   Next
               </Button> 
             </>
