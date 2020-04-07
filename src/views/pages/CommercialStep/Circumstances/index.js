@@ -144,9 +144,12 @@ function Circumstances() {
                         onChange={handleMarryChange}
                     >
                     <MenuItem value='married'>Married</MenuItem>
-                    <MenuItem value='3_dependants'>3 dependants</MenuItem>
-                    <MenuItem value='marios_meats'>Marios Meats</MenuItem>
-                    <MenuItem value='meat_industry'>Meat Industry</MenuItem>
+                    <MenuItem value='never_married'>Never Married</MenuItem>
+                    <MenuItem value='engaged'>Engaged</MenuItem>
+                    <MenuItem value='divorced'>Divorced</MenuItem>
+                    <MenuItem value='separated'>Separated</MenuItem>
+                    <MenuItem value='widowed'>Widowed</MenuItem>
+                    <MenuItem value='de_facto'>De facto</MenuItem>
                     </Select>
                 </FormControl>
                 <form className={classes.root} validate autoComplete="off">
