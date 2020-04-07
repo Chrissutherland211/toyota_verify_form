@@ -3,6 +3,7 @@ export default {
         TOYOTA_FINANCE: {                        
             background_color: "#f5f6f7",
             header_color: "#ffffff",
+            footer_color: '#222',
             fonts:{
                 dark: "#222",
                 success: "#00c483",
