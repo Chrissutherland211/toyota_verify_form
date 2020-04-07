@@ -63,7 +63,7 @@ function FormIndividual() {
   const covid = localStorage.getItem('cobid')
   const twoperson = localStorage.getItem('twoperson')
   const localstep = localStorage.getItem('step')
-  const [step, setStep] = React.useState(54)
+  const [step, setStep] = React.useState(0)
   
   // console.log(twoperson)
   const next = async () => {
@@ -287,6 +287,7 @@ function FormIndividual() {
                 return(
                   <StyledWidthDiv>
                     <h4>Background to Hardship</h4>
+                    {/* <CircumstancesLoan title={item.title}/> */}
                     <ValidateTextInput title={item.title} />                   
                   </StyledWidthDiv> 
                 )
@@ -294,15 +295,17 @@ function FormIndividual() {
                 return(
                   <AccidentResult title={item.title}/>
                 )
-              } else if (index===2 || index === 3){
+              } else if (index===2 ){
                 return(
                   <>
                     <h4>Background to Hardship</h4>
                     <h5>{item.title}</h5>
                     <DatePicker title="Date"/>
+                    <h5 style={{marginTop: '20px'}}>What date do you expect to be able to resume your full contractual repayments?</h5>
+                    <DatePicker title="Date"/>
                   </>
                 )
-              } else if (index===4){
+              } else if (index===3){
                 return(
                   <>
                     <h4>Background to Hardship</h4>
@@ -310,7 +313,7 @@ function FormIndividual() {
                     <TBCHardship />
                   </>
                 )
-              } else if (index===5){
+              } else if (index===4){
                 return(
                   <>
                     <h4>Background to Hardship</h4>
@@ -318,7 +321,7 @@ function FormIndividual() {
                     <PriceInput title="AUD"/>
                   </>
                 )
-              }  else if (index===6){
+              }  else if (index===5){
                 return(
                   <>
                     <FinanceProtection title={item.title}/>
@@ -333,9 +336,9 @@ function FormIndividual() {
           backgroundHardshipCont.map((item, index)=>{
             var distance = 0
             if(twoperson==='false'){
-              distance = 57
+              distance = 56
             } else {
-              distance = 64
+              distance = 63
             }
             if(step===index+distance){
               if(index===0){
@@ -355,9 +358,9 @@ function FormIndividual() {
           proposalAssistance.map((item, index)=>{
             var distance = 0
             if(twoperson==='false'){
-              distance = 58
+              distance = 57
             } else {
-              distance = 65
+              distance = 64
             }
             if(step===index+distance){
               if(index===0 || index===1){
@@ -398,7 +401,7 @@ function FormIndividual() {
 
         
         <StyledDiv>
-          {twoperson==='true' && step===69 && covid==='false' ?
+          {twoperson==='true' && step===68 && covid==='false' ?
             <>
               <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                 BACK
@@ -408,7 +411,7 @@ function FormIndividual() {
               </Button>
             </>
             :
-            twoperson==='false' && step===62 && covid==='false' ?
+            twoperson==='false' && step===61 && covid==='false' ?
             <>
               <Button variant="contained" color="secondary" className={classes.color}  onClick={()=>before()}>
                     BACK
