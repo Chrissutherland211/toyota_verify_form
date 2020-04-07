@@ -82,7 +82,10 @@ function RegisterNumber() {
                 <FormControl component="fieldset" className={classes.formControl}>       
                     <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
                     <FormControlLabel value="true" control={<Radio />} label="Yes" className={classes.root}/>
-                    {/* <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/> */}
+                    <FormControlLabel value="false" control={<Radio />} label="No" className={classes.root}/>
+                    {value==='false'&&
+                    <h5>Can’t proceed without Registration or Contract Number</h5>
+                    }
                     </RadioGroup>        
                 </FormControl>
                 <ButtonGroup before={before} next={next}/>
